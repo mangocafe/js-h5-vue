@@ -1,11 +1,9 @@
 <template>
 	<div class="tabar">
-		<router-link :to="tab.url" v-for="(tab, index) in tabNames" :key="index" >
-			<div class="tab-item">
-				<img class="tab-icon" :src="navIndex === index ? tab.iconActive : tab.icon"/>
-				<div class="tabName" :class="{ textActive: navIndex === index }">{{tab.name}}</div>
-			</div>
-		</router-link>
+		<div class="tab-item" v-for="(tab, index) in tabNames" :key="index" @click="switchTab(tab)">
+			<img class="tab-icon" :src="navIndex === index ? tab.iconActive : tab.icon"/>
+			<div class="tabName" :class="{ textActive: navIndex === index }">{{tab.name}}</div>
+		</div>
 	</div>
 </template>
 
@@ -32,7 +30,12 @@ export default {
           return 0;
       }
     },
-  },
+	},
+	methods: {
+		switchTab(tab) {
+			this.$router.replace({ name: tab.routeName });
+		},
+	},
 };
 </script>
 

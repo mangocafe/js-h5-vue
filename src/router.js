@@ -18,11 +18,13 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home,
+      meta: { level: 1, isTab: true, title: '首页' },
     },
     {
       path: '/mine',
       name: 'mine',
       component: Mine,
+      meta: { level: 1, isTab: true, title: '我的' },
     },
   ],
 });

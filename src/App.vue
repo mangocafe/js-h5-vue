@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <com-header title="首页"/>
+    <com-header :title="title"/>
     <div class="content">
       <router-view/>
     </div>
@@ -28,13 +28,19 @@ export default {
     return {
       tabNames: [
         {
-          name: '首页', icon: homeIcon, iconActive: homeIconActive, url: '/home',
+          name: '首页', icon: homeIcon, iconActive: homeIconActive, routeName: 'home',
         },
         {
-          name: '我的', icon: mineIcon, iconActive: mineIconActive, url: '/mine',
+          name: '我的', icon: mineIcon, iconActive: mineIconActive, routeName: 'mine',
         },
       ],
+      title: '',
     };
+  },
+  watch: {
+    $route(to) {
+      this.title = to.meta.title;
+    },
   },
 };
 </script>
