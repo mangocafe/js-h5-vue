@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <com-header msg="首页"/>
+    <com-header title="首页"/>
     <router-view/>
   </div>
 </template>
@@ -17,6 +17,13 @@ export default {
 </script>
 
 <style lang="scss">
+html,body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin:0;
+  padding:0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
