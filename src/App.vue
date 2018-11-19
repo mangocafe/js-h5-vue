@@ -4,7 +4,7 @@
     <div class="content">
       <router-view/>
     </div>
-    <footer-tab :tabNames="tabNames"></footer-tab>
+    <footer-tab v-if="isShowTabbar" :tabNames="tabNames"></footer-tab>
   </div>
 </template>
 
@@ -37,6 +37,11 @@ export default {
       title: '',
     };
   },
+  computed: {
+    isShowTabbar() {
+      return this.$route.meta.isTab;
+    },
+  },
   watch: {
     $route(to) {
       this.title = to.meta.title;
@@ -59,7 +64,9 @@ export default {
     margin:0;
     padding:0;
   }
-
+  input:focus {
+    outline: none;
+  }
   #app {
     height: 100%;
     background: #f8f8f8;

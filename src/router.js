@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 const Home = () => import('@/views/Home');
 const Mine = () => import('@/views/Mine');
+const Login = () => import('@/views/Login');
 
 Vue.use(Router);
 
@@ -25,6 +26,12 @@ export default new Router({
       name: 'mine',
       component: Mine,
       meta: { level: 1, isTab: true, title: '我的' },
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: { level: 1, isTab: false, title: '登录' },
     },
   ],
 });
