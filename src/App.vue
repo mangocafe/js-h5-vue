@@ -2,7 +2,9 @@
   <div id="app">
     <com-header :title="title"/>
     <div class="content">
-      <router-view/>
+      <transition :name="transitionName">
+        <router-view/>
+      </transition>
     </div>
     <footer-tab v-if="isShowTabbar" :tabNames="tabNames"></footer-tab>
   </div>
@@ -38,6 +40,7 @@ export default {
         },
       ],
       title: '',
+      transitionName: '',
     };
   },
   computed: {
@@ -51,8 +54,11 @@ export default {
     },
   },
   watch: {
-    $route(to) {
+    $route(to, from) {
+      const toLevel = Number(to.meta.level);
+      const fromLevel = Number(from.meta.level);
       this.title = to.meta.title;
+      this.setRouteTransiton(toLevel, fromLevel);
     },
   },
   created() {
@@ -64,6 +70,17 @@ export default {
       api.getOptions().then((res) => {
         this.setOptions(res.data.data);
       });
+    },
+    setRouteTransiton(toLevel, fromLevel) {
+      // 如果是切换底部tab或首次打开h5 不加动画
+      if (!fromLevel) {
+        this.transitionName = '';
+      } else if (toLevel === 1 && fromLevel === 1) {
+        this.transitionName = '';
+      } else {
+        // 根据路由 元信息的层级判断 切换的动画
+        this.transitionName = toLevel < fromLevel ? 'slide-right' : 'slide-left';
+      }
     },
   },
 };
@@ -95,6 +112,39 @@ export default {
 
     .content {
       flex: 1;
+    }
+
+    .slide-left-enter-active {
+      animation: slideLeft .3s;
+    }
+    .slide-right-enter-active {
+      animation: slideRight .3s;
+    }
+    .fold-enter-active, .fold-leave-active {
+      transition: transform .3s ease-in;
+    }
+    .fold-enter, .fold-leave-active {
+      transform: translate3d(0, 100%, 0);
+    }
+
+    @keyframes slideLeft {
+      from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+      }
+      to {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+      }
+      to {
+        transform: translate3d(0, 0, 0);
+      }
     }
   }
 </style>
