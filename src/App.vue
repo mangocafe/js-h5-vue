@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <com-header :title="title"/>
+    <com-header :isShowBack="isShowBack" :title="title"/>
     <div class="content">
       <transition :name="transitionName">
         <router-view/>
@@ -49,6 +49,9 @@ export default {
     }),
     isShowTabbar() {
       return this.$route.meta.isTab;
+    },
+    isShowBack() {
+      return this.$route.meta.level > 1;
     },
   },
   watch: {

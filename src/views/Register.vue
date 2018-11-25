@@ -20,20 +20,20 @@ export default {
     return {
       formConfigs: [
         {
- itemName: 'name', type: 'text', leftText: '昵称', rightValue: '', placeholder: '请输入',
-},
+          itemName: 'name', type: 'text', leftText: '昵称', rightValue: '', placeholder: '请输入',
+        },
         {
- itemName: 'realname', type: 'text', leftText: '真实姓名', rightValue: '', placeholder: '请输入',
-},
+          itemName: 'realname', type: 'text', leftText: '真实姓名', rightValue: '', placeholder: '请输入',
+        },
         {
- itemName: 'mobile', type: 'text', leftText: '登录手机', rightValue: '', placeholder: '请输入',
-},
+          itemName: 'mobile', type: 'text', leftText: '登录手机', rightValue: '', placeholder: '请输入',
+        },
         {
- itemName: 'password', type: 'password', leftText: '登录密码', rightValue: '', placeholder: '请输入',
-},
+          itemName: 'password', type: 'password', leftText: '登录密码', rightValue: '', placeholder: '请输入',
+        },
         {
- itemName: 'confirmPass', type: 'password', leftText: '确认密码', rightValue: '', placeholder: '请确认',
-},
+          itemName: 'confirmPass', type: 'password', leftText: '确认密码', rightValue: '', placeholder: '请确认',
+        },
       ],
     };
   },
@@ -53,8 +53,9 @@ export default {
         params[config.itemName] = config.rightValue;
       }
       const {
- realname, password, confirmPass, mobile,
-} = params;
+        realname, password, confirmPass, mobile,
+      } = params;
+
       if (!/^\d{11}$/.test(mobile) || !mobile) {
         this.toast('手机号码有误，请重填');
         return;
@@ -73,7 +74,7 @@ export default {
       }
       delete params[confirmPass];
       api.register(params).then((res) => {
-        if (res.data.code === 200) {
+        if (res.data.code === 0) {
           const fomatToken = `Bearer ${res.data.data.token}`;
           this.setToken(fomatToken);
           this.setUserInfo(res.data.data.userInfo);

@@ -25,7 +25,7 @@ export default {
   methods: {
     ...mapActions(['setToken', 'setUserInfo']),
     goRegister() {
-      this.$router.replace({ name: 'register' });
+      this.$router.push({ name: 'register' });
     },
     toast(str) {
       this.$createToast({

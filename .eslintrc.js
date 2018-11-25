@@ -13,8 +13,12 @@ module.exports = {
     'import/extensions': false,
     'no-tabs': 0,
     'max-len': 0,
-    'indent': 0,
+    indent: 0,
     'no-param-reassign': 0,
+    'prefer-destructuring': 0,
+    'no-unused-expressions': 0,
+    'no-restricted-syntax': 0,
+    'no-plusplus': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',
