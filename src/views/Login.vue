@@ -74,6 +74,7 @@ export default {
       }
 
       input {
+        font-size: 16px;
         padding: 10px;
         background: none;
         border: none;

@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 import ComHeader from '@/components/Header.vue';
 import FooterTab from '@/components/FooterTab.vue';
 
@@ -17,6 +18,8 @@ import homeIcon from '@/assets/image/tabs/tabbar_home_normal@2x.png';
 import homeIconActive from '@/assets/image/tabs/tabbar_home_selected@2x.png';
 import mineIcon from '@/assets/image/tabs/tabbar_my_normal@2x.png';
 import mineIconActive from '@/assets/image/tabs/tabbar_my_selected@2x.png';
+
+import api from '@/api';
 
 export default {
   name: 'home',
@@ -38,6 +41,11 @@ export default {
     };
   },
   computed: {
+    ...mapState({
+      userInfo: state => state.user.userInfo,
+      loginStatus: state => state.user.loginStatus,
+      currentPageTitle: state => state.base.currentPageTitle,
+    }),
     isShowTabbar() {
       return this.$route.meta.isTab;
     },
@@ -45,6 +53,17 @@ export default {
   watch: {
     $route(to) {
       this.title = to.meta.title;
+    },
+  },
+  created() {
+    this.getOptions();
+  },
+  methods: {
+    ...mapActions(['setOptions']),
+    getOptions() {
+      api.getOptions().then((res) => {
+        this.setOptions(res.data.data);
+      });
     },
   },
 };
