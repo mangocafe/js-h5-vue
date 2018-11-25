@@ -16,10 +16,10 @@ import ComHeader from '@/components/Header.vue';
 import FooterTab from '@/components/FooterTab.vue';
 
 // 引入底部菜单栏的图片
-import homeIcon from '@/assets/image/tabs/tabbar_home_normal@2x.png';
-import homeIconActive from '@/assets/image/tabs/tabbar_home_selected@2x.png';
-import mineIcon from '@/assets/image/tabs/tabbar_my_normal@2x.png';
-import mineIconActive from '@/assets/image/tabs/tabbar_my_selected@2x.png';
+import homeIcon from '@/assets/img/tabs/tabbar_home_normal@2x.png';
+import homeIconActive from '@/assets/img/tabs/tabbar_home_selected@2x.png';
+import mineIcon from '@/assets/img/tabs/tabbar_my_normal@2x.png';
+import mineIconActive from '@/assets/img/tabs/tabbar_my_selected@2x.png';
 
 import api from '@/api';
 
@@ -45,9 +45,7 @@ export default {
   },
   computed: {
     ...mapState({
-      userInfo: state => state.user.userInfo,
-      loginStatus: state => state.user.loginStatus,
-      currentPageTitle: state => state.base.currentPageTitle,
+      isLogin: state => state.isLogin,
     }),
     isShowTabbar() {
       return this.$route.meta.isTab;
@@ -63,6 +61,9 @@ export default {
   },
   created() {
     this.getOptions();
+    if (!this.isLogin) {
+      this.$router.replace({ name: 'login' });
+    }
   },
   methods: {
     ...mapActions(['setOptions']),

@@ -7,6 +7,7 @@
       <label class="label-wrap">密码：</label><input type="password" v-model="password" placeholder="请输入登录密码" />
     </section>
     <div class="button-wrapper" @click="login">登录</div>
+    <div class="register-wrapper" @click="goRegister">还没账号，点击去注册吧！</div>
   </div>
 </template>
 
@@ -23,6 +24,9 @@ export default {
   },
   methods: {
     ...mapActions(['setToken', 'setUserInfo']),
+    goRegister() {
+      this.$router.replace({ name: 'register' });
+    },
     toast(str) {
       this.$createToast({
         time: 1000,
@@ -92,6 +96,12 @@ export default {
       margin: 50px 10%;
       background: blue;
       color: #fff;
+    }
+
+    .register-wrapper {
+      color: red;
+      text-align: center;
+      text-decoration: underline;
     }
   }
 </style>

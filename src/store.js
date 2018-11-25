@@ -11,10 +11,15 @@ const SET_OPTIONS = 'SET_OPTIONS';
 export default new Vuex.Store({
   state: {
     options: null,
-    loginStatus: JSON.parse(localStorage.getItem('loginStatus')) || false,
+    isLogin: JSON.parse(localStorage.getItem('isLogin')) || false,
     // 用户登录信息
     token: JSON.parse(localStorage.getItem('token')) || '',
     userInfo: JSON.parse(localStorage.getItem('userInfo')) || null,
+  },
+  getters: {
+    loginStatus: s => s.loginStatus,
+    token: s => s.token,
+    userInfo: s => s.userInfo,
   },
   mutations: {
     [SET_USER_INFO](s, userInfo) {
@@ -37,12 +42,12 @@ export default new Vuex.Store({
     },
     setToken({ commit }, token) {
       localStorage.setItem('token', JSON.stringify(token));
-      localStorage.setItem('loginStatus', true);
+      localStorage.setItem('isLogin', true);
       commit(SET_TOKEN, token);
       commit(SET_LOGIN_STATUS, true);
     },
     setSignOut({ commit }) {
-      localStorage.removeItem('loginStatus');
+      localStorage.removeItem('isLogin');
       localStorage.removeItem('token');
       localStorage.removeItem('userInfo');
       commit(SET_LOGIN_STATUS, false);
