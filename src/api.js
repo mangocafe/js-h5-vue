@@ -29,4 +29,7 @@ export default {
   login(params) { // 登录
     return axios.post('/api/user/login', params);
   },
+  updatePassword(id, params) {
+    return axios.put(`/api/user/${id}/password`, params);
+  },
 };
