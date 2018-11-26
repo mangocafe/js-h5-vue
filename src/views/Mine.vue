@@ -1,6 +1,6 @@
 <template>
   <div class="mine">
-    <!-- <profile-item :profileInfo="profileInfo"></profile-item> -->
+    <profile-item :profileInfo="profileInfo"></profile-item>
     <form-items :formConfigs="formConfigs" style="margin-top: 15px"></form-items>
   </div>
 </template>
@@ -8,13 +8,13 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import formItems from '@/components/inputs';
-// import ProfileItem from '@/components/ProfileItem.vue';
+import ProfileItem from '@/components/ProfileItem.vue';
 // import api from '@/api';
 
 export default {
   components: {
     formItems,
-    // ProfileItem,
+    ProfileItem,
   },
   data() {
     return {
