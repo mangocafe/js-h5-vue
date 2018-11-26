@@ -4,15 +4,17 @@
     <img :src="defaultProfilePhoto" />
     <!-- <img :src="profileInfo.profilePhoto || defaultProfilePhoto" /> -->
   </div>
-  <!-- <div class="profile-info-wrap">
+  <div class="profile-info-wrap">
     {{profileInfo.name}}-{{profileInfo.mobile}}
-  </div> -->
+  </div>
 </div>
 </template>
 
 <script lang="ts">
 // import { Component, Provide, Prop, Vue } from 'vue-property-decorator';
+import { mapState } from 'vuex';
 import defaultProfilePhoto from '../assets/img/defaultProfilePhoto.png';
+
 
 // @Component
 export default {
@@ -22,6 +24,14 @@ export default {
 //   goPage() {
 //     this.$router.push({ name: 'userDetail' });
 //   }
+  computed: {
+    ...mapState({
+      userInfo: state => state.userInfo,
+    }),
+  },
+  created() {
+    this.profileInfo = this.userInfo;
+  },
   props: {
     defaultProfilePhoto: {
       type: String,
