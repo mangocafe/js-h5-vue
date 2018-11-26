@@ -3,12 +3,12 @@ import axios from 'axios';
 axios.defaults.timeout = 50000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
-const instance = axios.create();
-instance.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+const api = axios.create();
+api.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
-axios.interceptors.request.use = instance.interceptors.request.use;
+axios.interceptors.request.use = api.interceptors.request.use;
 
-instance.interceptors.request.use(
+api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -21,15 +21,15 @@ instance.interceptors.request.use(
 
 export default {
   getOptions() {
-    return axios.get('/api/base/options');
+    return api.get('/api/base/options');
   },
   register(params) { // 注册新用户
-    return axios.post('/api/user/register', params);
+    return api.post('/api/user/register', params);
   },
   login(params) { // 登录
-    return axios.post('/api/user/login', params);
+    return api.post('/api/user/login', params);
   },
   updatePassword(id, params) {
-    return axios.put(`/api/user/${id}/password`, params);
+    return api.put(`/api/user/${id}/password`, params);
   },
 };
