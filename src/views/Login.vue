@@ -44,10 +44,14 @@ export default {
       }
       const params = { mobile: this.mobile, password: this.password };
       api.login(params).then((res) => {
-        const fomatToken = `Bearer ${res.data.data.token}`;
-        this.setToken(fomatToken);
-        this.setUserInfo(res.data.data.userInfo);
-        this.$router.push({ name: 'home' });
+        if (res.data.code === 0) {
+          const fomatToken = `Bearer ${res.data.data.token}`;
+          this.setToken(fomatToken);
+          this.setUserInfo(res.data.data.userInfo);
+          this.$router.push({ name: 'home' });
+        } else {
+          this.toast(res.data.msg);
+        }
       });
     },
   },

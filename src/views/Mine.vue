@@ -31,14 +31,14 @@ export default {
     this.formConfigs = [{
       type: 'route',
       leftText: '修改密码',
-      rightValue: 'setting',
       onClick: () => this.goPage('updatePassword'),
-    },
-    {
+    }, {
+      type: 'route',
+      leftText: '测试',
+      onClick: () => this.goPage('test'),
+    }, {
       type: 'route',
       leftText: '退出登录',
-      rightValue: '',
-      id: '',
       onClick: () => this.logout(),
     }];
   },

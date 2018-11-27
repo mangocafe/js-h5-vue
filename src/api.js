@@ -4,7 +4,6 @@ axios.defaults.timeout = 50000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
 const api = axios.create();
-api.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
 axios.interceptors.request.use = api.interceptors.request.use;
 
