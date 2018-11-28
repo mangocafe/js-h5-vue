@@ -31,4 +31,7 @@ export default {
   updatePassword(id, params) {
     return api.put(`/api/user/${id}/password`, params);
   },
+  updateUser(id, params) {
+    return api.put(`/api/user/${id}`, params);
+  },
 };

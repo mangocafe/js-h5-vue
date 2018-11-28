@@ -7,6 +7,7 @@ const Login = () => import('@/views/Login');
 const Register = () => import('@/views/Register');
 const Test = () => import('@/views/Test');
 const UpdatePassword = () => import('@/views/UpdatePassword');
+const UserDetail = () => import('@/views/UserDetail');
 
 Vue.use(Router);
 
@@ -53,6 +54,12 @@ export default new Router({
       name: 'test',
       component: Test,
       meta: { level: 2, isTab: false, title: '测试' },
+    },
+    {
+      path: '/userDetail',
+      name: 'userDetail',
+      component: UserDetail,
+      meta: { level: 2, title: '个人信息' },
     },
   ],
 });
