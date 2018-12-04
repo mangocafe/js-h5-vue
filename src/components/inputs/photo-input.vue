@@ -55,7 +55,7 @@ export default {
         const form = new FormData();
         form.append('file', file);
         api.uploadPhoto(form).then((res) => {
-          if (res.status === 0) {
+          if (res.status === 200 && res.data.code === 0) {
             this.config.rightValue = res.data.data;
           }
         });

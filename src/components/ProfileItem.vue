@@ -1,8 +1,7 @@
 <template>
 <div class="profile-item-container" @click="goPage">
   <div class="profile-photo-wrap">
-    <img :src="defaultProfilePhoto" />
-    <!-- <img :src="profileInfo.profilePhoto || defaultProfilePhoto" /> -->
+    <img :src="profileInfo.profilePhoto || defaultProfilePhoto" />
   </div>
   <div class="profile-info-wrap">
     {{profileInfo.name}}-{{profileInfo.mobile}}

@@ -9,8 +9,6 @@
       <select-input v-if="config.type === 'select'" :config="config" :isNotShowLine="++index === formConfigs.length"></select-input>
       <route-input v-if="config.type === 'route'" :config="config" :isNotShowLine="++index === formConfigs.length"></route-input>
       <show-input v-if="config.type === 'show'" :config="config" :isNotShowLine="++index === formConfigs.length"></show-input>
-      <oselect-input v-if="config.type === 'oselect'" :config="config" :isNotShowLine="++index === formConfigs.length"></oselect-input>
-      <sms-input v-if="config.type === 'sms'" :config="config" :isNotShowLine="++index === formConfigs.length"></sms-input>
       <birth-input v-if="config.type === 'birth'" :config="config" :isNotShowLine="++index === formConfigs.length"></birth-input>
     </div>
   </div>
@@ -25,8 +23,6 @@ import dateInput from '@/components/inputs/date-input';
 import photoInput from '@/components/inputs/photo-input';
 import routeInput from '@/components/inputs/route-input';
 import showInput from '@/components/inputs/show-input';
-import oselectInput from '@/components/inputs/oselect-input';
-import smsInput from '@/components/inputs/sms-input';
 import birthInput from '@/components/inputs/birth-input';
 
 export default {
@@ -47,13 +43,8 @@ export default {
     photoInput,
     routeInput,
     showInput,
-    oselectInput,
-    smsInput,
     birthInput,
   },
-  // methods: {
-  //
-  // },
 };
 </script>
 

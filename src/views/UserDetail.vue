@@ -54,7 +54,7 @@ export default {
     prepareInfo() {
       const { id, name, mobile, address, birthday, sex, profilePhoto } = this.userInfo;
 
-      this.formConfigs[0].photoName = id ? `p-${id}` : 'p-n'; // 用于上传文件时重命名，便于后端区分存储
+      this.formConfigs[0].photoName = id ? `u-${id}` : 'u-n';
       this.formConfigs[0].rightValue = profilePhoto;
       this.formConfigs[1].rightValue = name;
       this.formConfigs[2].rightValue = mobile;
