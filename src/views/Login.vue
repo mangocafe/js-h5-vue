@@ -89,7 +89,7 @@ export default {
       }
 
       input:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 100px white inset;
+        -webkit-box-shadow: 0 0 0 100px white inset;
       }
     }
 

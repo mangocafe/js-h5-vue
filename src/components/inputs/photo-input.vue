@@ -12,7 +12,7 @@
 
 <script>
 import defaultProfilePhoto from '@/assets/img/defaultProfilePhoto.png';
-import api from '@/api';
+import utils from '@/utils';
 
 export default {
   props: {
@@ -43,23 +43,15 @@ export default {
   methods: {
     imgUpload() {
       const img = this.$refs.fileUpload.files[0];
-      const reader = new FileReader();
       // 重命名文件，如果提供了新名字则使用新名字，否则用原有的名字
       const imgType = img.name.split('.')[1];
       const now = Math.round(Date.now() / 1000); // 当前第几秒
       const rename = this.config.photoName ? `${this.config.photoName}-${now}.${imgType}` : img.name;
-
-      const file = new File([img], rename, { type: 'image/*' });
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const form = new FormData();
-        form.append('file', file);
-        api.uploadPhoto(form).then((res) => {
-          if (res.status === 200 && res.data.code === 0) {
-            this.config.rightValue = res.data.data;
-          }
-        });
-      };
+      utils.compressImage(img, rename, (res) => {
+        if (res.status === 200 && res.data.code === 0) {
+          this.config.rightValue = res.data.data;
+        }
+      });
     },
   },
 };
