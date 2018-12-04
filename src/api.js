@@ -28,6 +28,9 @@ export default {
   login(params) { // 登录
     return api.post('/api/user/login', params);
   },
+  getUsers(params) {
+    return api.post('/api/user/list', params);
+  },
   updatePassword(id, params) {
     return api.put(`/api/user/${id}/password`, params);
   },
