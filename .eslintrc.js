@@ -19,6 +19,7 @@ module.exports = {
     'no-unused-expressions': 0,
     'no-restricted-syntax': 0,
     'no-plusplus': 0,
+    'object-curly-newline': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',

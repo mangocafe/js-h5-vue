@@ -34,10 +34,6 @@ export default {
       onClick: () => this.goPage('updatePassword'),
     }, {
       type: 'route',
-      leftText: '测试',
-      onClick: () => this.goPage('test'),
-    }, {
-      type: 'route',
       leftText: '退出登录',
       onClick: () => this.logout(),
     }];

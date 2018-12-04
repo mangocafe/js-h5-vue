@@ -3,7 +3,7 @@
     <com-header :isShowBack="isShowBack" :title="title"/>
     <div class="content">
       <transition :name="transitionName">
-        <router-view/>
+        <router-view class="child-view" />
       </transition>
     </div>
     <footer-tab v-if="isShowTabbar" :tabNames="tabNames"></footer-tab>
@@ -115,7 +115,13 @@ export default {
     @include font-dpr(30px);
 
     .content {
-      flex: 1;
+      height: calc(100% - 50px);
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      .child-view {
+        height: 100%;
+      }
     }
 
     .slide-left-enter-active {

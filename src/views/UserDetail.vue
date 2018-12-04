@@ -20,23 +20,23 @@ export default {
     return {
       formConfigs: [
         {
- itemName: 'profilePhoto', type: 'photo', photoName: '', leftText: '头像', rightValue: '',
-},
+          itemName: 'profilePhoto', type: 'photo', photoName: '', leftText: '头像', rightValue: '',
+        },
         {
- itemName: 'name', type: 'text', leftText: '昵称', rightValue: '',
-},
+          itemName: 'name', type: 'text', leftText: '昵称', rightValue: '',
+        },
         {
- itemName: 'mobile', type: 'show', leftText: '手机', rightValue: '',
-},
+          itemName: 'mobile', type: 'show', leftText: '手机', rightValue: '',
+        },
         {
- itemName: 'birthday', type: 'birth', leftText: '生日', rightValue: '',
-},
+          itemName: 'birthday', type: 'birth', leftText: '生日', rightValue: '',
+        },
         {
- itemName: 'sex', type: 'select', leftText: '性别', rightValue: '请选择', rightText: '请选择', options: [],
-},
+          itemName: 'sex', type: 'select', leftText: '性别', rightValue: '请选择', rightText: '请选择', options: [],
+        },
         {
- itemName: 'address', type: 'text', leftText: '住址', rightValue: '', placeholder: '请输入住址',
-},
+          itemName: 'address', type: 'text', leftText: '住址', rightValue: '', placeholder: '请输入住址',
+        },
       ],
     };
   },
@@ -52,9 +52,8 @@ export default {
   methods: {
     ...mapActions(['setUserInfo']),
     prepareInfo() {
-      const {
- id, name, mobile, address, birthday, sex, profilePhoto,
-} = this.userInfo;
+      const { id, name, mobile, address, birthday, sex, profilePhoto } = this.userInfo;
+
       this.formConfigs[0].photoName = id ? `p-${id}` : 'p-n'; // 用于上传文件时重命名，便于后端区分存储
       this.formConfigs[0].rightValue = profilePhoto;
       this.formConfigs[1].rightValue = name;
