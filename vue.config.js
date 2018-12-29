@@ -18,7 +18,6 @@ module.exports = {
       theme: true,
     },
   },
-
   css: {
     loaderOptions: {
       stylus: {

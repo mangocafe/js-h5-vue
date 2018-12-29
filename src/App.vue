@@ -107,6 +107,9 @@ export default {
   input:focus {
     outline: none;
   }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px white inset;
+  }
   #app {
     height: 100%;
     background: #f8f8f8;

@@ -31,6 +31,9 @@ export default {
   getUsers(params) {
     return api.post('/api/user/list', params);
   },
+  updateMobile(id, params) {
+    return api.put(`/api/user/${id}/mobile`, params);
+  },
   updatePassword(id, params) {
     return api.put(`/api/user/${id}/password`, params);
   },

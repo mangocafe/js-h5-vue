@@ -30,6 +30,10 @@ export default {
     this.profileInfo = this.userInfo;
     this.formConfigs = [{
       type: 'route',
+      leftText: '修改手机',
+      onClick: () => this.goPage('updateMobile'),
+    }, {
+      type: 'route',
       leftText: '修改密码',
       onClick: () => this.goPage('updatePassword'),
     }, {

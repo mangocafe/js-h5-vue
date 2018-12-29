@@ -87,10 +87,6 @@ export default {
         background: none;
         border: none;
       }
-
-      input:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 100px white inset;
-      }
     }
 
     .button-wrapper {

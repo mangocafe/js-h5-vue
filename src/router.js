@@ -6,6 +6,7 @@ const Mine = () => import('@/views/Mine');
 const Login = () => import('@/views/Login');
 const Register = () => import('@/views/Register');
 const UpdatePassword = () => import('@/views/UpdatePassword');
+const UpdateMobile = () => import('@/views/UpdateMobile');
 const UserDetail = () => import('@/views/UserDetail');
 
 Vue.use(Router);
@@ -47,6 +48,12 @@ export default new Router({
       name: 'updatePassword',
       component: UpdatePassword,
       meta: { level: 2, isTab: false, title: '修改密码' },
+    },
+    {
+      path: '/updateMobile',
+      name: 'updateMobile',
+      component: UpdateMobile,
+      meta: { level: 2, isTab: false, title: '修改手机' },
     },
     {
       path: '/userDetail',
