@@ -20,7 +20,7 @@ export default {
     return {
       formConfigs: [
         {
-          itemName: 'oldpassword', type: 'password', leftText: '原密码', rightValue: '', placeholder: '请输入',
+          itemName: 'oldPassword', type: 'password', leftText: '原密码', rightValue: '', placeholder: '请输入',
         },
         {
           itemName: 'password', type: 'password', leftText: '新密码', rightValue: '', placeholder: '请输入',
@@ -38,21 +38,22 @@ export default {
   },
   methods: {
     submit() {
-      const password = this.formConfigs[1].rightValue;
+      const params = {};
+      for (const config of this.formConfigs) {
+        params[config.itemName] = config.rightValue;
+      }
+      const {
+        confirmPass, password,
+      } = params;
       if (!/^.{6,}$/.test(password) || !password) {
         this.$toast('密码不足6位，请重填');
         return;
       }
-      const confirmPass = this.formConfigs[2].rightValue;
       if (password !== confirmPass) {
         this.$toast('两次密码不一致，请重填');
         return;
       }
       const id = this.userInfo.id;
-      const params = {
-        oldPassword: this.formConfigs[0].rightValue,
-        password,
-      };
       api.updatePassword(id, params).then((res) => {
         if (res.data.code === 0) {
           this.$router.replace({ name: 'login' });
